@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  kanboard:
+    image: kanboard/kanboard:latest
+    container_name: kanboard
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./data:/var/www/html/data
+      - ./plugins:/var/www/html/plugins
+    environment:
+      - DEBUG=false
+      - TIMEZONE=America/Mexico_City
+    # SQLite database incrustado en ./data
